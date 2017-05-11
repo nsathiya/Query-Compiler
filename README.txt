@@ -9,6 +9,33 @@ To use:
  {
    "query": "( >400 <=500 ) AND ( !false OR =\"This is test\" )"
  }
+2. Response-
+ {
+  "$and": [
+    {
+      "$and": [
+        {
+          "$gt": "400"
+        },
+        {
+          "$lte": "500"
+        }
+      ]
+    },
+    {
+      "$or": [
+        {
+          "$not": "false"
+        },
+        {
+          "$eq": {
+            "$quoted": "This is test"
+          }
+        }
+      ]
+    }
+  ]
+ }
 
 Tests:
 Tests for main parse function are under utilities/parserTest.js
